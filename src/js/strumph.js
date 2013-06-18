@@ -65,8 +65,8 @@ function Strumph(opts) {
 
 
 Strumph.defaults = {
-	template: '<div class="password-strumph"><div class="password-meter-message"></div><div class="password-meter-bar"></div></div>'
-	, message: '.password-meter-message'
+	template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
+	, message: '.strumph-meter-message'
 	, messages: {
 		'similar-to-username': 'Too similar to username',
 		'too-short': 'Too short',
@@ -99,14 +99,11 @@ Strumph.prototype.checkPassword = function (password) {
 Strumph.prototype.updateMeter = function (rating) {
 	var $meter = this.$meter;
 
-	$('.password-meter-bar', $meter).removeClass()
-		.addClass('password-meter-bar')
-		.addClass('password-meter-' + rating.messageKey);
+	$('.strumph-meter', $meter).removeClass()
+		.addClass('strumph-meter')
+		.addClass('strumph-meter-' + rating.messageKey);
 
-	$('.password-meter-message', $meter).removeClass()
-		.addClass('password-meter-message')
-		.addClass('password-meter-message-' + rating.messageKey)
-		.text(this.messages[rating.messageKey]);
+	$('.strumph-meter-message', $meter).text(this.messages[rating.messageKey]);
 };
 
 

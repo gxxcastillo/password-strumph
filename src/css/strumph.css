@@ -1,0 +1,55 @@
+.strumph-meter-bg   {
+	background-color: #888; height: 4px;
+}
+
+.strumph-meter-bar                  {
+	height: 100%;
+}
+
+.strumph-meter-similar-to-username .strumph-meter-message   {
+	color: red;
+}
+
+.strumph-meter-too-short .strumph-meter-message {
+	color: red;
+}
+
+.strumph-meter-very-weak .strumph-meter-message {
+	color: #aa0033;
+}
+
+.strumph-meter-weak .strumph-meter-message {
+	color: #f5ac00;
+}
+
+.strumph-meter-good .strumph-meter-message {
+	color: #6699cc;
+}
+
+.strumph-meter-strong .strumph-meter-message {
+	color: #008000;
+}
+
+.strumph-meter-similar-to-username .strumph-meter-bar   {
+	background-color: #333; width: 25%;
+}
+
+.strumph-meter-too-short .strumph-meter-bar {
+	background-color: #333; width: 25%;
+}
+
+.strumph-meter-very-weak .strumph-meter-bar {
+	background-color: #aa0033; width: 25%;
+}
+
+.strumph-meter-weak .strumph-meter-bar {
+	background-color: #f5ac00; width: 50%;
+}
+
+.strumph-meter-good .strumph-meter-bar {
+	background-color: #6699cc; width: 75%;
+}
+
+.strumph-meter-strong .strumph-meter-bar {
+	background-color: #008000; width: 100%;
+}
