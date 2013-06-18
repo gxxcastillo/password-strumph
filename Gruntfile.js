@@ -11,12 +11,12 @@ module.exports = function(grunt) {
 				' * Copyright (c) <%= grunt.template.today("yyyy") %> Uglymunky\n' +
 				' * \n' +
 				' * Refactored from jQuery validate.password plug-in 1.0\n' +
-				' * Original Copyright (c) 2009 Jörn Zaefferer\n\n' +
+				' * Original Copyright (c) 2009 Jörn Zaefferer\n' +
+				' * \n' +
 				' * Dual licensed under the MIT and GPL licenses:\n' +
 				' * http://www.opensource.org/licenses/mit-license.php\n' +
 				' * http://www.gnu.org/licenses/gpl.html\n' +
 				' */\n'
-
 		}
 
 
