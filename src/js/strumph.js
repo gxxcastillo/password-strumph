@@ -40,22 +40,7 @@ function strumph (options) {
 }
 
 
-/**
- *
- * @param opts
- * @constructor
- */
-function Strumph(opts) {
-	var options = $.extend({}, Strumph.defaults, opts);
-	var $target = $(options.target).html(options.template);
-
-	this.$meter = $(options.meter, $target);
-	this.$message = $(options.message, $target);
-	this.messages = options.messages;
-}
-
-
-Strumph.defaults = {
+strumph.defaults = {
 	template: '<div class="strumph-meter"><div class="strumph-meter-message">&nbsp;</div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
 	, meter: '.strumph-meter'
 	, message: '.strumph-meter-message'
@@ -68,6 +53,21 @@ Strumph.defaults = {
 		'strong': 'Strong'
 	}
 };
+
+
+/**
+ *
+ * @param opts
+ * @constructor
+ */
+function Strumph(opts) {
+	var options = $.extend({}, strumph.defaults, opts);
+	var $target = $(options.target).html(options.template);
+
+	this.$meter = $(options.meter, $target);
+	this.$message = $(options.message, $target);
+	this.messages = options.messages;
+}
 
 
 /**
