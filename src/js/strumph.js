@@ -56,10 +56,10 @@ function Strumph(opts) {
 
 
 Strumph.defaults = {
-	template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
+	template: '<div class="strumph-meter"><div class="strumph-meter-message">&nbsp;</div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
 	, meter: '.strumph-meter'
 	, message: '.strumph-meter-message'
-	, target: '.strumph'
+	, target: '.password-strumph'
 	, messages: {
 		'too-short': 'Too short',
 		'very-weak': 'Very weak',
