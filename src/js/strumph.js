@@ -1,6 +1,6 @@
 /**
- * Taken from jQuery validate.password plug-in 1.0
- * Copyright (c) 2009 Jörn Zaefferer
+ * Refactored from jQuery validate.password plug-in 1.0
+ * Original Copyright (c) 2009 Jörn Zaefferer
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -8,11 +8,11 @@
  */
 
 var LOWER = /[a-z]/
-	, UPPER = /[A-Z]/
-	, DIGIT = /[0-9]/
-	, DIGITS = /[0-9].*[0-9]/
-	, SPECIAL = /[^a-zA-Z0-9]/
-	, SAME = /^(.)\1+$/;
+, UPPER = /[A-Z]/
+, DIGIT = /[0-9]/
+, DIGITS = /[0-9].*[0-9]/
+, SPECIAL = /[^a-zA-Z0-9]/
+, SAME = /^(.)\1+$/;
 
 
 /**
@@ -54,17 +54,17 @@ function strumph (options) {
  */
 function Strumph(opts) {
 	var options = $.extend({}, Strumph.defaults, opts);
+	var $target = $(options.target).html(options.template);
 
-	$(options.target).html(options.template);
-
-	this.$meter = options.$meter;
+	this.$meter = $(options.meter, $target);
+	this.$message = $(options.message, $target);
 	this.messages = options.messages;
-	this.$message = $(options.message, this.$meter);
 }
 
 
 Strumph.defaults = {
 	template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
+	, meter: '.strumph-meter'
 	, message: '.strumph-meter-message'
 	, target: '.strumph'
 	, messages: {
@@ -96,13 +96,11 @@ Strumph.prototype.checkPassword = function (password) {
  * @param {rating} rating
  */
 Strumph.prototype.updateMeter = function (rating) {
-	var $meter = this.$meter;
-
-	$('.strumph-meter', $meter).removeClass()
+	this.$meter.removeClass()
 		.addClass('strumph-meter')
 		.addClass('strumph-meter-' + rating.messageKey);
 
-	$('.strumph-meter-message', $meter).text(this.messages[rating.messageKey]);
+	this.$message.text(this.messages[rating.messageKey]);
 };
 
 
@@ -136,10 +134,10 @@ Strumph.prototype.rate = function (password) {
 	}
 
 	var lower = LOWER.test(password)
-		, upper = UPPER.test(uncapitalize(password))
-		, digit = DIGIT.test(password)
-		, digits = DIGITS.test(password)
-		, special = SPECIAL.test(password);
+	, upper = UPPER.test(uncapitalize(password))
+	, digit = DIGIT.test(password)
+	, digits = DIGITS.test(password)
+	, special = SPECIAL.test(password);
 
 	if (lower && upper && digit || lower && digits || upper && digits || special) {
 		return this.rating(4, 'strong');
