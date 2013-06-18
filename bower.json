@@ -1,5 +1,5 @@
 {
-  "name": "strumph",
+  "name": "password-strumph",
   "version": "0.1.1",
   "dependencies": {
     "jquery": "~2.0.2"

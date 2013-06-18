@@ -1,5 +1,5 @@
 {
-  "name": "strumph",
+  "name": "password-strumph",
   "version": "0.1.1",
   "description": "Password strenght meter",
   "main": "index.js",
