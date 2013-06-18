@@ -4,7 +4,7 @@
  * 
  * Refactored from jQuery validate.password plug-in 1.0
  * Original Copyright (c) 2009 Jörn Zaefferer
-
+ * 
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
@@ -72,7 +72,7 @@ define(['jquery'], function ($) {
 		template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
 		, meter: '.strumph-meter'
 		, message: '.strumph-meter-message'
-		, target: '.strumph'
+		, target: '.password-strumph'
 		, messages: {
 			'too-short': 'Too short',
 			'very-weak': 'Very weak',
