@@ -1,11 +1,4 @@
-/**
- * Refactored from jQuery validate.password plug-in 1.0
- * Original Copyright (c) 2009 Jörn Zaefferer
- *
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- */
+'use strict';
 
 var LOWER = /[a-z]/
 , UPPER = /[A-Z]/
