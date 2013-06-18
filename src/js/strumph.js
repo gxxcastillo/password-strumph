@@ -59,7 +59,6 @@ function Strumph(opts) {
 
 	this.$meter = options.$meter;
 	this.messages = options.messages;
-	this.username = options.username;
 	this.$message = $(options.message, this.$meter);
 }
 
@@ -67,8 +66,8 @@ function Strumph(opts) {
 Strumph.defaults = {
 	template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
 	, message: '.strumph-meter-message'
+	, target: '.strumph'
 	, messages: {
-		'similar-to-username': 'Too similar to username',
 		'too-short': 'Too short',
 		'very-weak': 'Very weak',
 		'weak': 'Weak',
@@ -85,7 +84,7 @@ Strumph.defaults = {
  * @returns {Boolean}
  */
 Strumph.prototype.checkPassword = function (password) {
-	var rating = this.rate(password, this.username);
+	var rating = this.rate(password);
 
 	this.updateMeter(rating);
 	return rating.rate > 2;
@@ -125,16 +124,11 @@ Strumph.prototype.rating = function (rate, message) {
  *
  *
  * @param password
- * @param username
  * @returns {rating}
  */
-Strumph.prototype.rate = function (password, username) {
+Strumph.prototype.rate = function (password) {
 	if (!password || password.length < 8) {
 		return this.rating(0, 'too-short');
-	}
-
-	if (username && password.toLowerCase().match(username.toLowerCase())) {
-		return this.rating(0, 'similar-to-username');
 	}
 
 	if (SAME.test(password)) {

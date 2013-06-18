@@ -6,10 +6,6 @@
 	height: 100%;
 }
 
-.strumph-meter-similar-to-username .strumph-meter-message   {
-	color: red;
-}
-
 .strumph-meter-too-short .strumph-meter-message {
 	color: red;
 }
@@ -28,10 +24,6 @@
 
 .strumph-meter-strong .strumph-meter-message {
 	color: #008000;
-}
-
-.strumph-meter-similar-to-username .strumph-meter-bar   {
-	background-color: #333; width: 25%;
 }
 
 .strumph-meter-too-short .strumph-meter-bar {
