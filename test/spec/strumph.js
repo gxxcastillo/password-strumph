@@ -1,6 +1,9 @@
-descibe('strumph.js', function () {
+buster.spec.expose();
 
-	it('', function () {
+describe('strumph.js', function () {
+	'use strict';
 
+	it('does stuff', function () {
+		expect(true).toBeTrue();
 	});
 });
