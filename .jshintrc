@@ -2,7 +2,6 @@
 	"bitwise": true
 	, "curly": true
 	, "immed": true
-	, "latedef": true
 	, "maxcomplexity": 10
 	, "maxdepth": 3
 	, "maxerr": 1000000
