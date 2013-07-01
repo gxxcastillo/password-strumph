@@ -1,5 +1,5 @@
 /**
- * password-strumph.js - v0.1.0 
+ * password-strumph.js - v0.1.1 
  * Copyright (c) 2013 Uglymunky
  * 
  * Refactored from jQuery validate.password plug-in 1.0
@@ -37,39 +37,12 @@
 	 * @returns {Strumph}
 	 */
 	function strumph (options) {
-		var _strumph
-			, $el = $(options.el);
-	
-		if (! $el) {
-			throw 'Missing "el"'
-		}
-	
-		_strumph = new Strumph(options);
-		$el.keyup(function (event) {
-			_strumph.checkPassword(event.target.value);
-		});
-	
-		return _strumph;
+		return new Strumph(options);
 	}
 	
 	
-	/**
-	 *
-	 * @param opts
-	 * @constructor
-	 */
-	function Strumph(opts) {
-		var options = $.extend({}, Strumph.defaults, opts);
-		var $target = $(options.target).html(options.template);
-	
-		this.$meter = $(options.meter, $target);
-		this.$message = $(options.message, $target);
-		this.messages = options.messages;
-	}
-	
-	
-	Strumph.defaults = {
-		template: '<div class="strumph-meter"><div class="strumph-meter-message"></div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
+	strumph.defaults = {
+		template: '<div class="strumph-meter"><div class="strumph-meter-message">&nbsp;</div><div class="strumph-meter-bg"><div class="strumph-meter-bar"></div></div></div>'
 		, meter: '.strumph-meter'
 		, message: '.strumph-meter-message'
 		, target: '.password-strumph'
@@ -85,6 +58,28 @@
 	
 	/**
 	 *
+	 * @param opts
+	 * @constructor
+	 */
+	function Strumph(opts) {
+		this.$input = $(opts.input);
+	
+		if (! this.$input) {
+			throw 'Missing "input"';
+		}
+	
+		var options = $.extend({}, strumph.defaults, opts);
+		var $target = $(options.target).html(options.template);
+	
+		this.$meter = $(options.meter, $target);
+		this.$message = $(options.message, $target);
+		this.messages = options.messages;
+		this.bind();
+	}
+	
+	
+	/**
+	 *
 	 *
 	 * @param {String} password
 	 * @returns {Boolean}
@@ -94,6 +89,20 @@
 	
 		this.updateMeter(rating);
 		return rating.rate > 2;
+	};
+	
+	
+	/**
+	 *
+	 *
+	 * @returns {jQuery}
+	 */
+	Strumph.prototype.bind = function () {
+		var self = this;
+	
+		return this.$input.keyup(function (event) {
+			self.checkPassword(event.target.value);
+		});
 	};
 	
 	
