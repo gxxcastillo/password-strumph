@@ -1,5 +1,5 @@
 /**
- * password-strumph.js - v0.1.1 
+ * password-strumph.js - v0.1.2 
  * Copyright (c) 2013 Uglymunky
  * 
  * Refactored from jQuery validate.password plug-in 1.0
@@ -46,6 +46,7 @@
 		, meter: '.strumph-meter'
 		, message: '.strumph-meter-message'
 		, target: '.password-strumph'
+		, minLength: 6
 		, messages: {
 			'too-short': 'Too short',
 			'very-weak': 'Very weak',
@@ -74,6 +75,7 @@
 		this.$meter = $(options.meter, $target);
 		this.$message = $(options.message, $target);
 		this.messages = options.messages;
+		this.settings = options;
 		this.bind();
 	}
 	
@@ -140,7 +142,7 @@
 	 * @returns {rating}
 	 */
 	Strumph.prototype.rate = function (password) {
-		if (!password || password.length < 8) {
+		if (!password || password.length < this.settings.minLength) {
 			return this.rating(0, 'too-short');
 		}
 	
