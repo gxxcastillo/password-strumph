@@ -34,6 +34,7 @@ strumph.defaults = {
 	, message: '.strumph-meter-message'
 	, target: '.password-strumph'
 	, minLength: 6
+	, showOnLoad: false
 	, messages: {
 		'too-short': 'Too short',
 		'very-weak': 'Very weak',
@@ -56,10 +57,14 @@ function Strumph(opts) {
 		throw 'Missing "input"';
 	}
 
-	var options = $.extend({}, strumph.defaults, opts);
-	var $target = $(options.target).html(options.template);
+	var options = $.extend({}, strumph.defaults, opts)
+	, $target = $(options.target).html(options.template);
 
 	this.$meter = $(options.meter, $target);
+	if (! options.showOnLoad) {
+		this.$meter.hide();
+	}
+
 	this.$message = $(options.message, $target);
 	this.messages = options.messages;
 	this.settings = options;
@@ -88,6 +93,13 @@ Strumph.prototype.checkPassword = function (password) {
  */
 Strumph.prototype.bind = function () {
 	var self = this;
+
+	// If the meter is hidden, make sure and show it upon input
+	if (! self.$meter.is(':visible')) {
+		this.$input.one('keyup', function () {
+			self.$meter.show();
+		});
+	}
 
 	return this.$input.keyup(function (event) {
 		self.checkPassword(event.target.value);
