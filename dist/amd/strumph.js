@@ -1,5 +1,5 @@
 /**
- * password-strumph.js - v0.1.3 
+ * password-strumph.js - v0.1.4 
  * Copyright (c) 2013 Uglymunky
  * 
  * Refactored from jQuery validate.password plug-in 1.0
